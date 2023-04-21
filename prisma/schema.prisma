@@ -1,0 +1,57 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Fixture {
+  id                   Int      @id @default(autoincrement())
+  time                 DateTime @default(now()) @map(name: "time")
+  status               String
+  round                String
+  homeTeamId           Int
+  awayTeamId           Int
+  leagueId             Int
+  venueId              Int
+  homeTeamScore        Int
+  awayTeamScore        Int
+  homeTeamPenaltyScore Int
+  awayTeamPenaltyScore Int
+  homeTeamYellowCards  Int
+  awayTeamYellowCards  Int
+  homeTeamRedCards     Int
+  awayTeamRedCards     Int
+  createdAt            DateTime @default(now()) @map(name: "created_at")
+  updatedAt            DateTime @updatedAt @map(name: "updated_at")
+  homeTeam             Team     @relation("homeTeam", fields: [homeTeamId], references: [id])
+  awayTeam             Team     @relation("awayTeam", fields: [awayTeamId], references: [id])
+
+  @@map(name: "fixtures")
+}
+
+model Team {
+  id            Int       @id @default(autoincrement())
+  name          String
+  logo          String
+  country       String
+  founded       String
+  venueName     String
+  venueSurface  String
+  venueAddress  String
+  venueCity     String
+  venueCapacity String
+  isNational    String
+  lastUpdated   String
+  createdAt     DateTime  @default(now()) @map(name: "created_at")
+  updatedAt     DateTime  @updatedAt @map(name: "updated_at")
+  hostFixtures  Fixture[] @relation("homeTeam")
+  awayFixtures  Fixture[] @relation("awayTeam")
+
+  @@map(name: "teams")
+}
