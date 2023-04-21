@@ -17,7 +17,7 @@ This API provides endpoints to retrieve fixture and calendar data.
 
 **Method:** `GET`
 
-**URL:** `http://localhost:3000/api/v1/fixtures?page=1&limit=1&date=19&month=04&year=2023`
+**URL:** `https://fixture-service.vercel.app/api/v1/fixtures?page=1&limit=1&date=19&month=04&year=2023`
 
 ### Request
 
@@ -25,13 +25,13 @@ This endpoint retrieves fixture data with pagination.
 
 **Parameters:**
 
-| Name  | Required | Type   | Description   |
-|-------|----------|--------|---------------|
-| page  | Yes      | Number | The page number to retrieve |
-| limit | Yes      | Number | The number of fixtures per page |
+| Name  | Required | Type   | Description                       |
+| ----- | -------- | ------ | --------------------------------- |
+| page  | Yes      | Number | The page number to retrieve       |
+| limit | Yes      | Number | The number of fixtures per page   |
 | date  | Yes      | Number | The day of the month to filter by |
-| month | Yes      | Number | The month to filter by |
-| year  | Yes      | Number | The year to filter by |
+| month | Yes      | Number | The month to filter by            |
+| year  | Yes      | Number | The year to filter by             |
 
 **Response:**
 
@@ -93,7 +93,7 @@ If the request is successful, the API returns a list of fixtures for the given p
 
 **Method:** `GET`
 
-**URL:** `http://localhost:3000/api/v1/calendars?&month=04&year=2023`
+**URL:** `https://fixture-service.vercel.app/api/v1/calendars?&month=04&year=2023`
 
 ### Request
 
@@ -101,10 +101,10 @@ This endpoint retrieves fixture data for a specific month and year.
 
 **Parameters:**
 
-| Name  | Required | Type   | Description   |
-|-------|----------|--------|---------------|
+| Name  | Required | Type   | Description            |
+| ----- | -------- | ------ | ---------------------- |
 | month | Yes      | Number | The month to filter by |
-| year  | Yes      | Number | The year to filter by |
+| year  | Yes      | Number | The year to filter by  |
 
 **Response:**
 
