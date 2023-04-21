@@ -2,17 +2,20 @@
   "name": "fixtures-service",
   "version": "0.1.0",
   "private": true,
+  "prisma": {
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "test": "jest --watch",
+    "vercel-build": "prisma generate && prisma migrate deploy && next build",
     "prisma:generate": "prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^4.13.0",
-    "@types/node": "18.15.11",
     "@types/react": "18.0.37",
     "@types/react-dom": "18.0.11",
     "date-fns": "^2.29.3",
@@ -20,8 +23,7 @@
     "eslint-config-next": "13.3.0",
     "next": "13.3.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "typescript": "5.0.4"
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.21.4",
@@ -29,11 +31,14 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@types/jest": "^29.5.1",
+    "@types/node": "^18.15.13",
     "@types/supertest": "^2.0.12",
     "jest": "^29.5.0",
     "jest-dom": "^4.0.0",
     "jest-environment-jsdom": "^29.5.0",
     "prisma": "^4.13.0",
-    "supertest": "^6.3.3"
+    "supertest": "^6.3.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
   }
 }
